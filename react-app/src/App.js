@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import Contacts from './Cinemaworld.js'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    render() {
+        return (
+            <Contacts contacts={this.state.contacts} />
+        )
+    }
+
+    state = {
+        contacts: []
+    };
+
+    componentDidMount() {
+        fetch('https://challenge.lexicondigital.com.au/api/cinemaworld/movies/', {headers: {'x-api-key': 'Yr2636E6BTD3UCdleMkf7UEdqKnd9n361TQL9An7' }})
+            .then(res => res.json())
+            .then((data) => {
+              
+                this.setState({ contacts: data.Movies })
+            })
+            .catch(console.log)
+    }
 }
 
 export default App;
