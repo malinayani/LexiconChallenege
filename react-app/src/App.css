@@ -42,7 +42,7 @@ nav {
   justify-content: space-around;
   align-items: center;
   min-height: 10vh;
-  background: rgb(226, 116, 116);
+  background: rgb(0, 153, 255);
   color: white;
 }
 
@@ -55,7 +55,7 @@ nav {
 }
 
 .topContainer {
-  display: flex;
+  display: inline;
   flex-direction: row;
   width: 100%;
 }

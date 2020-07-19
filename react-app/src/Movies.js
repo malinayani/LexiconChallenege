@@ -27,6 +27,7 @@ function Movies() {
   return (
     <div>
       <br />
+      <h1>CLICK ON THE POSTERS TO FIND THEIR RESPECTIVE PRICE</h1>
       {itemsCinemaworld.map((item) => (
         <h5 key={item.ID}>
           <Link to={`/movies/${item.ID}`} style={linkStyle}>
@@ -38,7 +39,6 @@ function Movies() {
         </h5>
       ))}
       <br />
-      horizontal = {true}
     </div>
   );
 }

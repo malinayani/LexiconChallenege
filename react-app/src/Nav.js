@@ -11,7 +11,7 @@ function Nav() {
     <nav>
       <ul className="nav-links">
         <Link style={navStyle} to="/movies">
-          <h1 >Princess Theatre</h1>
+          <h1 >Movies</h1>
         </Link>
       </ul>
     </nav>
