@@ -53,3 +53,10 @@ nav {
   align-items: center;
   list-style: none;
 }
+
+.topContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+

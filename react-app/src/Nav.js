@@ -10,14 +10,8 @@ function Nav() {
   return (
     <nav>
       <ul className="nav-links">
-        <Link style={navStyle} to="/">
-          <li>Home</li>
-        </Link>
-        <Link style={navStyle} to="/about">
-          <li>About</li>
-        </Link>
         <Link style={navStyle} to="/movies">
-          <li>Movies</li>
+          <h1 >Princess Theatre</h1>
         </Link>
       </ul>
     </nav>
