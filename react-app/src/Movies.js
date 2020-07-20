@@ -1,16 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
+import { Row, Col } from "react-simple-flex-grid";
+import "react-simple-flex-grid/lib/main.css";
+import "./App.css";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    height: 140,
+    width: 100,
+  },
+  control: {
+    padding: theme.spacing(2),
+  },
+}));
 
 function Movies() {
   const linkStyle = {
     color: "black",
   };
 
+  const [itemsCinemaworld, setItemsCinemaworld] = useState([]);
+
   useEffect(() => {
     fetchCinemaworldItems();
+    //const interval = setInterval(() => {
+    //  fetchCinemaworldItems();
+    //}, 3000);
+    //return () => clearInterval(interval);
   }, []);
-
-  const [itemsCinemaworld, setItemsCinemaworld] = useState([]);
 
   const fetchCinemaworldItems = async () => {
     const data = await fetch(
@@ -19,30 +40,36 @@ function Movies() {
     );
     //console.log(data);
     const items = await data.json();
-    const myItems = items.Movies;
+    //console.log(data);
+    //console.log(data.json.Movies);
     //console.log(items.Movies);
-    setItemsCinemaworld(myItems);
+    setItemsCinemaworld(items.Movies);
   };
 
   return (
-    <div>
-      <br />
-      <h1>CLICK ON THE POSTERS TO FIND THEIR RESPECTIVE PRICE</h1>
-      {itemsCinemaworld.map((item) => (
-        <h5 key={item.ID}>
-          <Link to={`/movies/${item.ID}`} style={linkStyle}>
-            {/* {item.Title} */}
-            <div class="topContainer">
-            <img src={item.Poster} alt="" />
+    <Row gutter={40} justify="center">
+      <Col xs={{ span: 12 }} sm={{ span: 10 }}>
+        <Row gutter={40}>
+          <Col span={12}>
+            <div className="companyList">
+              <h2>All Movies</h2>
+              <Row gutter={10}>
+                {itemsCinemaworld.map((item) => (
+                  <Col md={{ span: 3 }}>
+                    <Link to={`/movies/${item.ID}`} style={linkStyle}>
+                      {<img src={`${item.Poster}.jpg`} width="100%" />}
+                      {item.Title}
+                    </Link>
+                  </Col>
+                ))}
+              </Row>
             </div>
-          </Link>
-        </h5>
-      ))}
-      <br />
-    </div>
+          </Col>
+        </Row>
+      </Col>
+    </Row>
   );
 }
 
 export default Movies;
-
 
